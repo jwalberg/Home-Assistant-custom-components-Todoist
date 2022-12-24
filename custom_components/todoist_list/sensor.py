@@ -56,7 +56,7 @@ class TodoistSensor(Entity):
 
     @property
     def name(self):
-        return '{} - {}'.format(self._name)
+        return '{}'.format(self._name)
 
     @property
     def state(self):
