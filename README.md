@@ -17,7 +17,7 @@ This sensor downloads a list of tasks from [*Todoist*](https://todoist.com/). At
 sensor:
  -  platform: todoist_list
     todoist_api: !secret todoist_list_api
-    filter: "due before: next week"
+    filter: "due before today"
 ```
 
 ## Installation
