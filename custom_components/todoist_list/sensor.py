@@ -3,7 +3,7 @@ import hashlib
 from todoist_api_python.api import TodoistAPI
 import homeassistant.helpers.config_validation as cv
 import voluptuous as vol
-
+import logging
 from homeassistant.components.sensor import ENTITY_ID_FORMAT, PLATFORM_SCHEMA
 from homeassistant.const import CONF_NAME
 from homeassistant.helpers.entity import async_generate_entity_id, Entity
@@ -12,10 +12,12 @@ DEFAULT_NAME = 'Todoist List'
 CONF_TODOIST_API='todoist_api'
 CONF_FILTER='filter'
 
+_LOGGER: logging.Logger = logging.getLogger(__package__)
+
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend({
     vol.Optional(CONF_NAME, default=DEFAULT_NAME): cv.string,
     vol.Required(CONF_TODOIST_API): cv.string,
-    vol.Optional(CONF_FILTER, default=""): cv.string
+    vol.Optional(CONF_FILTER, default="due today"): cv.string
 })
 
 
@@ -28,7 +30,7 @@ def setup_platform(hass, config, add_entities, discovery_info=None):
     sensor_name = config.get(CONF_NAME)
     filter = config.get(CONF_FILTER)
     todoist_api = config.get(CONF_TODOIST_API)
-
+    _LOGGER.debug("SETUP: name " + sensor_name + "; filter " + filter + "; api " + todoist_api)
     api = TodoistAPI(todoist_api)
     
     if not api:
@@ -50,6 +52,7 @@ class TodoistSensor(Entity):
         self._filter = filter
         self._tasks = []
         self._state = None
+        self.
 
     @property
     def name(self):
@@ -75,6 +78,7 @@ class TodoistSensor(Entity):
         self._tasks = []
         
         for task in tasks:
+            _LOGGER.debug("task=" + task.content)
             if len(task.labels) >0:
                 labels = []
                 for label in task.labels:
