@@ -23,7 +23,7 @@ sensor:
 ## Installation
 
 
-### Manual
+### TODO
 
 
 
