@@ -75,10 +75,10 @@ class TodoistSensor(Entity):
         self._tasks = []
         for task in tasks:
             content = task.content
-            created_at=task.created_at
-            description = str(task.description)
-            url = str(task.url)
-            due=task.due
+            #created_at=task.created_at
+            #description = str(task.description)
+            #url = str(task.url)
+            #due=task.due
             #due_date=task.due.date
             #recurring=task.due.recurring
             #due_string=task.due.string
@@ -86,7 +86,7 @@ class TodoistSensor(Entity):
             task_id=task.id
 
             labels = []
-            if len(task.label) >0:
+            if len(task.label) >5000:
                 for label in labels:
                     labels.append(label)
             self._tasks.append(task)
