@@ -19,12 +19,9 @@ This sensor downloads a list of tasks from [*Todoist*](https://todoist.com/). At
 
 ```
 sensor:
-  - platform: google_keep
-    username: !secret google_keep.username
-    password: !secret google_keep.password
-    labels:
-      - 'Home Assistant'
-    pinned: true
+ -  platform: todoist_list
+    todoist_api: !secret todoist_list_api
+    filter: "due before: next week"
 ```
 
 ## Installation
