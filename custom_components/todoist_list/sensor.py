@@ -57,7 +57,7 @@ class TodoistSensor(Entity):
 
     @property
     def state(self):
-        return 1 #len(self._tasks)
+        return len(self._tasks)
 
     @property
     def extra_state_attributes(self):
@@ -95,22 +95,22 @@ class TodoistSensor(Entity):
             self._tasks.append(savetask)
 
     @staticmethod
-    def make_note(note_type, title, lines, children, checked, unchecked, color, url):
+    def make_note(content, task_id): #,  description, url, due, labels):
         note = dict()
-        note["note_type"] = note_type
-        note["title"] = title
-        note["url"] = url
-        note["lines"] = lines
-        note["children"] = children
-        note["color"] = color
-        note["checked"] = checked
-        note["unchecked"] = unchecked
+        note["note_type"] = content
+        note["title"] = task_id
+        #note["url"] = url
+        #note["lines"] = lines
+        #note["children"] = children
+        #note["color"] = color
+        #note["checked"] = checked
+        #note["unchecked"] = unchecked
         return note
 
     @staticmethod
     def map_node(node):
         node_data = dict()
-        node_data["checked"] = node.checked
-        node_data["text"] = node.text
-        node_data["children"] = list(map(lambda c: TodoistSensor.map_node(c), node.subitems))
+        node_data["content"] = node.content
+        node_data["task_id"] = node.task_id
+        #node_data["children"] = list(map(lambda c: TodoistSensor.map_node(c), node.subitems))
         return node_data
