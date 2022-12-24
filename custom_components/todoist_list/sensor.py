@@ -52,7 +52,7 @@ class TodoistSensor(Entity):
         self._filter = filter
         self._tasks = []
         self._state = None
-        self.
+       
 
     @property
     def name(self):
@@ -118,4 +118,3 @@ class TodoistSensor(Entity):
         node_data["task_id"] = node.task_id
         #node_data["children"] = list(map(lambda c: TodoistSensor.map_node(c), node.subitems))
         return node_data
- 
