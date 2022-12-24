@@ -12,16 +12,16 @@ jobs:
       - name: Download repo
         uses: actions/checkout@v1
 
-      - name: Zip google_keep dir
+      - name: Zip todoist_list dir
         run: |
-          cd /home/runner/work/Home-Assistant-custom-components-Google-Keep/Home-Assistant-custom-components-Google-Keep/custom_components/google_keep
-          zip google_keep.zip -r ./
+          cd /home/runner/work/Home-Assistant-custom-components-Todoist/Home-Assistant-custom-components-Todoist/custom_components/todoist_list
+          zip todoist_list.zip -r ./
 
       - name: Upload zip to release
         uses: svenstaro/upload-release-action@v1-release
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: /home/runner/work/Home-Assistant-custom-components-Google-Keep/Home-Assistant-custom-components-Google-Keep/custom_components/google_keep/google_keep.zip
-          asset_name: google_keep.zip
+          file: /home/runner/work/Home-Assistant-custom-components-Todoist/Home-Assistant-custom-components-Todoist/custom_components/todoist_list/todoist_list.zip
+          asset_name: todoist_list.zip
           tag: ${{ github.ref }}
           overwrite: true
