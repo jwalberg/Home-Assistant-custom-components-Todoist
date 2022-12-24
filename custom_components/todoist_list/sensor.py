@@ -74,21 +74,21 @@ class TodoistSensor(Entity):
         tasks=self._api.get_tasks(filter=self._filter)
         self._tasks = []
         for task in tasks:
-            content = task.content
-            #created_at=task.created_at
-            #description = str(task.description)
-            #url = str(task.url)
-            #due=task.due
-            #due_date=task.due.date
-            #recurring=task.due.recurring
-            #due_string=task.due.string
-            #due_timezone=task.due.timezone
-            task_id=task.id
+            self._tasks.content = task.content
+            #self._tasks.created_at=task.created_at
+            #self._tasks.description = str(task.description)
+            #self._tasks.url = str(task.url)
+            #self._tasks.due=task.due
+            #self._tasks.due_date=task.due.date
+            #self._tasks.recurring=task.due.recurring
+            #self._tasks.due_string=task.due.string
+            #self._tasks.due_timezone=task.due.timezone
+            self._tasks.task_id=task.id
 
             labels = []
-            if len(task.label) >5000:
+            if len(task.labels) >5000:
                 for label in labels:
-                    labels.append(label)
+                    self._tasks.labels.append(label)
             self._tasks.append(task)
 
     @staticmethod
