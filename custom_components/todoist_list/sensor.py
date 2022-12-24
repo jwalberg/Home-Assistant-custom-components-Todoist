@@ -81,16 +81,16 @@ class TodoistSensor(Entity):
                     labels.append(label)
             savetask={
                 "content":task.content,
-                "created_at":task.created_at,
-                "description":str(task.description),
-                "url":str(task.url),
-                "due":task.due,
+                #"created_at":task.created_at,
+                #"description":str(task.description),
+                #"url":str(task.url),
+                #"due":task.due,
                 #"due_date":task.due.date,
                 #recurring":task.due.recurring
                 #due_string":task.due.string
                 #due_timezone":task.due.timezone
                 "task_id":task.id,
-                "labels":labels
+                #"labels":labels
             }
             self._tasks.append(savetask)
 
