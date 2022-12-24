@@ -10,7 +10,7 @@ This sensor downloads a list of tasks from [*Todoist*](https://todoist.com/). At
 | --- | --- | --- | --- | --- |
 | `name` | `string` | `False` | `Todoist List` | Name of sensor |
 | `todoist_api` | `string` | `True` | - | Todoist API key |
-| `filter` | `string` | `False` |  | A valid search filter using Todoist's filter rules|
+| `filter` | `string` | `False` | due today | A valid search filter using Todoist's filter rules|
 
 ## Example usage
 ```
