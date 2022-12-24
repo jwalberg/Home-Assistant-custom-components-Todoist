@@ -118,3 +118,4 @@ class TodoistSensor(Entity):
         node_data["task_id"] = node.task_id
         #node_data["children"] = list(map(lambda c: TodoistSensor.map_node(c), node.subitems))
         return node_data
+ 
