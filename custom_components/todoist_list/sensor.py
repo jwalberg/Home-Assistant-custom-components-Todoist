@@ -57,7 +57,7 @@ class TodoistSensor(Entity):
 
     @property
     def state(self):
-        return len(self._tasks)
+        return 1 #len(self._tasks)
 
     @property
     def extra_state_attributes(self):
@@ -78,10 +78,11 @@ class TodoistSensor(Entity):
             created_at=task.created_at
             description = str(task.description)
             url = str(task.url)
-            due_date=task.due.date
-            recurring=task.due.recurring
-            due_string=task.due.string
-            due_timezone=task.due.timezone
+            due=task.due
+            #due_date=task.due.date
+            #recurring=task.due.recurring
+            #due_string=task.due.string
+            #due_timezone=task.due.timezone
             task_id=task.id
 
             labels = []
