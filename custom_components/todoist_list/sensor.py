@@ -73,23 +73,26 @@ class TodoistSensor(Entity):
         pass
         tasks=self._api.get_tasks(filter=self._filter)
         self._tasks = []
+        
         for task in tasks:
-            content = task.content
-            #created_at=task.created_at
-            #description = str(task.description)
-            #url = str(task.url)
-            #due=task.due
-            #due_date=task.due.date
-            #recurring=task.due.recurring
-            #due_string=task.due.string
-            #due_timezone=task.due.timezone
-            task_id=task.id
-
-            labels = []
-            if len(task.labels) >5000:
-                for label in labels:
-                    self._tasks.labels.append(label)
-            self._tasks.append(task)
+            if len(task.labels) >0:
+                labels = []
+                for label in task.labels:
+                    labels.append(label)
+            savetask={
+                "content":task.content,
+                "created_at":task.created_at,
+                "description":str(task.description),
+                "url":str(task.url),
+                "due":task.due,
+                #"due_date":task.due.date,
+                #recurring":task.due.recurring
+                #due_string":task.due.string
+                #due_timezone":task.due.timezone
+                "task_id":task.id,
+                "labels":labels
+            }
+            self._tasks.append(savetask)
 
     @staticmethod
     def make_note(note_type, title, lines, children, checked, unchecked, color, url):
