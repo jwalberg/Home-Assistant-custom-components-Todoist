@@ -1,5 +1,5 @@
 {
-  "domain": "todist_list",
+  "domain": "todoist_list",
   "name": "Todoist List",
   "documentation": "https://github.com/jwalberg/Home-Assistant-custom-components-Todoist",
   "issue_tracker": "https://github.com/jwalberg/Home-Assistant-custom-components-Todoist/issues",
